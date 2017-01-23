@@ -3,9 +3,9 @@
 
 ## Getting started
 
-`$ npm install react-native-google-sign-in --save`
+See [Tested Environments](#tested-environments)
 
-`$ react-native link react-native-google-sign-in`
+`$ react-native install react-native-google-sign-in`
 
 ## Android
 Follow Google's official instructions for [Android](https://developers.google.com/identity/sign-in/android/start-integrating).

@@ -7,7 +7,8 @@
 
 `$ react-native link react-native-google-sign-in`
 
-Follow instructions [ios](https://developers.google.com/identity/sign-in/ios/start-integrating) and [android](https://developers.google.com/identity/sign-in/android/start-integrating)
+Follow Google's official instructions, [iOS](https://developers.google.com/identity/sign-in/ios/start-integrating) and [Android](https://developers.google.com/identity/sign-in/android/start-integrating).
+
 
 
 ## Usage

@@ -102,34 +102,34 @@ class RNGoogleSignInEvents: RCTEventEmitter, GIDSignInDelegate {
     }
   }
   
-  func signIn(user: GIDGoogleUser!) {
+  func signIn(user: GIDGoogleUser?) {
     if (!observing) { return }
     sendEvent(withName: "signIn", body: RNGoogleSignInEvents.userToJSON(user))
   }
   
-  func signInError(error: Error!) {
+  func signInError(error: Error?) {
     if (!observing) { return }
     sendEvent(withName: "signInError", body: [
-      "description": error.localizedDescription,
+      "description": error?.localizedDescription ?? "",
       ])
   }
   
-  func disconnect(user: GIDGoogleUser!) {
+  func disconnect(user: GIDGoogleUser?) {
     if (!observing) { return }
     sendEvent(withName: "disconnect", body: RNGoogleSignInEvents.userToJSON(user))
   }
   
-  func disconnectError(error: Error!) {
+  func disconnectError(error: Error?) {
     if (!observing) { return }
     sendEvent(withName: "disconnectError", body: [
-      "description": error.localizedDescription,
+      "description": error?.localizedDescription ?? "",
       ])
   }
   
-  func dispatch(error: Error!) {
+  func dispatch(error: Error?) {
     if (!observing) { return }
     sendEvent(withName: "dispatch", body: [
-      "description": error.localizedDescription,
+      "description": error?.localizedDescription ?? "",
       ])
   }
   

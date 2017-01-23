@@ -90,7 +90,7 @@ class RNGoogleSignIn: NSObject, GIDSignInUIDelegate {
   
   // START: GIDSignInUIDelegate
   
-  func sign(inWillDispatch signIn: GIDSignIn!, error: Error!) {
+  func sign(inWillDispatch signIn: GIDSignIn!, error: Error?) {
     events?.dispatch(error: error)
   }
   

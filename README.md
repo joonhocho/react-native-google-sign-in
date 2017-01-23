@@ -13,7 +13,7 @@ Follow Google's official instructions for [Android](https://developers.google.co
 
 Follow everything from the instructions with the following modifications:
  - Move `google-services.json` to `{YourApp}/android/app/google-services.json`.
- - Modify your `${YourApp}/android/app/build.gradle`:
+ - Modify your `{YourApp}/android/app/build.gradle`:
 
 ```
 dependencies {

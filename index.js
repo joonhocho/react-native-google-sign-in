@@ -1,6 +1,2 @@
-
-import { NativeModules } from 'react-native';
-
-const { RNGoogleSignIn } = NativeModules;
-
-export default RNGoogleSignIn;
+export {default} from './js/GoogleSignIn';
+export * from './js/GoogleSignIn';

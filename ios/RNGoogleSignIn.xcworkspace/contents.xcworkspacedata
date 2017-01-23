@@ -5,6 +5,9 @@
       location = "group:RNGoogleSignIn"
       name = "RNGoogleSignIn">
       <FileRef
+         location = "group:RNGoogleSignIn-Bridging-Header.h">
+      </FileRef>
+      <FileRef
          location = "group:RNGoogleSignIn.swift">
       </FileRef>
       <FileRef

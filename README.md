@@ -1,5 +1,7 @@
-# React Native Wrapper for Google Sign-In SDK
+# React Native Wrapper for Latest Google Sign-In SDK
 
+https://github.com/devfd/react-native-google-signin is not working and is not being maintained anymore, so I created this one myself.
+It uses the latest Google Sign-In SDK.
 
 ## Getting started
 

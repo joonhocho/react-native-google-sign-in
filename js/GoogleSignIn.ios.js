@@ -21,6 +21,7 @@ const GoogleSignIn = {
 
   configure(config) {
     RNGoogleSignIn.configure(config);
+    return Promise.resolve();
   },
 
   signIn() {

@@ -1,5 +1,5 @@
-
 # React Native Wrapper for Google Sign-In SDK
+
 
 ## Getting started
 
@@ -7,13 +7,14 @@ See [Tested Environments](#tested-environments).
 
 `$ react-native install react-native-google-sign-in`
 
+
 ## Android
 Follow Google's official instructions for [Android](https://developers.google.com/identity/sign-in/android/start-integrating).
 
 Follow everything from the instructions with the following modifications:
  - Move `google-services.json` to `{YourApp}/android/app/google-services.json`.
  - Modify your `${YourApp}/android/app/build.gradle`:
- 
+
 ```
 dependencies {
     compile project(':react-native-google-sign-in') // Should be added automatically by react-native link.
@@ -25,21 +26,6 @@ dependencies {
 apply plugin: "com.google.gms.google-services" // Add this after dependencies.
 ```
 
-(Optional) If you want to obtain `serverAuthCode`:
- - Add `<string name="server_client_id">{Your Google Server Client ID}</string>` to `{YourApp}/android/app/src/main/res/values/strings.xml`.
- 
- - In `MainApplication.java`:
-```
-import com.reactlibrary.googlesignin.RNGoogleSignInModule;
-
-...
-
-    @Override
-    public void onCreate() {
-        super.onCreate();
-        RNGoogleSignInModule.setServerClientID(getApplicationContext().getString(R.string.server_client_id));
-    }
-```
 
 ## iOS
 
@@ -58,6 +44,33 @@ Follow Google's official instructions for [iOS](https://developers.google.com/id
 - Add `$(SRCROOT)/../node_modules/react-native-google-sign-in/ios/RNGoogleSignIn`.
 
 
+
+## Usage
+```javascript
+import GoogleSignIn from 'react-native-google-sign-in';
+
+// later in your code...
+async yourMethod() {
+  await GoogleSignIn.configure({
+    clientID: 'yourClientID', // (iOS)
+    scopes: ['your', 'requested', 'api', 'scopes'], // (iOS, Android) See [googlescopes](https://developers.google.com/identity/protocols/googlescopes).
+    shouldFetchBasicProfile: boolean, // (iOS, Android) Whether to request email and basic profile. (Default: true). See [Official Document](https://developers.google.com/identity/sign-in/ios/api/interface_g_i_d_sign_in.html#a06bf16b507496b126d25ea909d366ba4).
+    language: string, // (iOS) See [Official Document](https://developers.google.com/identity/sign-in/ios/api/interface_g_i_d_sign_in.html#a486c8df263ca799bea18ebe5430dbdf7).
+    loginHint: string, // (iOS) See [Official Document](https://developers.google.com/identity/sign-in/ios/api/interface_g_i_d_sign_in.html#a0a68c7504c31ab0b728432565f6e33fd).
+    serverClientID: 'yourServerClientID', // (iOS, Android) See [Official Document](https://developers.google.com/identity/sign-in/ios/api/interface_g_i_d_sign_in.html#ae214ed831bb93a06d8d9c3692d5b35f9).
+    offlineAccess: boolean, // (Android) Whether to request server auth code. Make sure to provide `serverClientID`.
+    openIDRealm: string, // (iOS) See [Official Document](https://developers.google.com/identity/sign-in/ios/api/interface_g_i_d_sign_in.html#a211c074872cd542eda53f696c5eef871).
+    accountName: 'yourServerAccountName', // (Android) See [setAccountName](https://developers.google.com/android/reference/com/google/android/gms/auth/api/signin/GoogleSignInOptions.Builder.html#setAccountName(java.lang.String))
+    hostedDomain: 'yourHostedDomain', // (iOS, Android) See [Official Document](https://developers.google.com/identity/sign-in/ios/api/interface_g_i_d_sign_in.html#a6d85d14588e8bf21a4fcf63e869e3be3).
+  });
+
+  const user = await GoogleSignIn.signInPromise();
+
+  console.log(user);
+}
+```
+
+
 ## Tested Environments
 
 I only tested with the following environments:
@@ -66,13 +79,27 @@ I only tested with the following environments:
  - Android Studio 2.2.3 / Build #AI-145.3537739, built on December 2, 2016 / JRE: 1.8.0_112-release-b05 x86_64 / JVM: OpenJDK 64-Bit Server VM by JetBrains s.r.o
 
 
-
-
-## Usage
-```javascript
-import RNGoogleSignIn from 'react-native-google-sign-in';
-
-// TODO: What do with the module?
-RNGoogleSignIn;
+## LICENSE
 ```
-  
+The MIT License (MIT)
+
+Copyright (c) 2017 Joon Ho Cho
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+```

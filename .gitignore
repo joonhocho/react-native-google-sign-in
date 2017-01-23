@@ -40,7 +40,6 @@ jspm_packages
 android/.idea/
 android/gradle/wrapper/
 android/android.iml
-android/build.gradle
 android/gradlew
 android/gradlew.bat
 android/local.properties

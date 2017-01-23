@@ -35,3 +35,12 @@ jspm_packages
 
 # Optional REPL history
 .node_repl_history
+
+# Android
+android/.idea/
+android/gradle/wrapper/
+android/android.iml
+android/build.gradle
+android/gradlew
+android/gradlew.bat
+android/local.properties

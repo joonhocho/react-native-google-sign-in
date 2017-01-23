@@ -51,10 +51,16 @@ public class RNGoogleSignInModule extends ReactContextBaseJavaModule implements 
 
     private GoogleApiClient mGoogleApiClient = null;
     private WritableMap params = null;
+    private static String serverClientID = null;
 
     public RNGoogleSignInModule(final ReactApplicationContext reactContext) {
         super(reactContext);
         reactContext.addActivityEventListener(this);
+    }
+
+
+    public static void setServerClientID(String serverClientID) {
+      RNGoogleSignInModule.serverClientID = serverClientID;
     }
 
     @Override
@@ -100,7 +106,7 @@ public class RNGoogleSignInModule extends ReactContextBaseJavaModule implements 
         boolean shouldFetchBasicProfile = config.hasKey("shouldFetchBasicProfile") ? config.getBoolean("shouldFetchBasicProfile") : true;
         String language = config.hasKey("language") ? config.getString("language") : null;
         String loginHint = config.hasKey("loginHint") ? config.getString("loginHint") : null;
-        String serverClientID = config.hasKey("serverClientID") ? config.getString("serverClientID") : getReactApplicationContext().getString(R.string.server_client_id);
+        String serverClientID = config.hasKey("serverClientID") ? config.getString("serverClientID") : RNGoogleSignInModule.serverClientID;
         boolean offlineAccess = config.hasKey("offlineAccess") && config.getBoolean("offlineAccess");
         String openIDRealm = config.hasKey("openIDRealm") ? config.getString("openIDRealm") : null;
         String accountName = config.hasKey("accountName") ? config.getString("accountName") : null;

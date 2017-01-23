@@ -1,4 +1,13 @@
 apply plugin: 'com.android.library'
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.google.gms:google-services:3.0.0'
+    }
+}
+
 android {
     compileSdkVersion 23
     buildToolsVersion "23.0.1"
@@ -19,7 +28,6 @@ android {
 }
 
 dependencies {
-    compile "com.android.support:appcompat-v7:23.0.1"
     compile "com.google.android.gms:play-services-auth:10.0.1"
     compile "com.facebook.react:react-native:+"
 }

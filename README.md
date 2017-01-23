@@ -3,7 +3,7 @@
 
 ## Getting started
 
-See [Tested Environments](#tested-environments)
+See [Tested Environments](#tested-environments).
 
 `$ react-native install react-native-google-sign-in`
 

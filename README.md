@@ -46,7 +46,7 @@ Follow Google's official instructions for [iOS](https://developers.google.com/id
 - Add `$(SRCROOT)/../node_modules/react-native-google-sign-in/ios/RNGoogleSignIn`.
 
 
-Modify your `{YourApp}/ios/{YourApp}/AppDelegate.m`:
+Add to your `{YourApp}/ios/{YourApp}/AppDelegate.m`:
 ```
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -80,7 +80,14 @@ Modify your `{YourApp}/ios/{YourApp}/AppDelegate.m`:
 }
 ```
 
-Modify or add your Swift bridging header, `{YourApp}/ios/{YourApp}-Bridging-Header.h`:
+
+Add to your `{YourApp}/ios/{YourApp}/AppDelegate.h`:
+```
+#import <Google/SignIn.h>
+```
+
+
+Add to your Swift bridging header, `{YourApp}/ios/{YourApp}-Bridging-Header.h`:
 ```
 #import <React/RCTBridgeModule.h>
 #import <React/RCTViewManager.h>

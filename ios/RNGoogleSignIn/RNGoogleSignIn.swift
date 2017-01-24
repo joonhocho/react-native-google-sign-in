@@ -54,19 +54,27 @@ class RNGoogleSignIn: NSObject, GIDSignInUIDelegate {
   }
   
   @objc func signIn() {
-    GIDSignIn.sharedInstance().signIn()
+    DispatchQueue.main.async {
+      GIDSignIn.sharedInstance().signIn()
+    }
   }
   
   @objc func signOut() {
-    GIDSignIn.sharedInstance().signOut()
+    DispatchQueue.main.async {
+      GIDSignIn.sharedInstance().signOut()
+    }
   }
   
   @objc func signInSilently() {
-    GIDSignIn.sharedInstance().signInSilently()
+    DispatchQueue.main.async {
+      GIDSignIn.sharedInstance().signInSilently()
+    }
   }
   
   @objc func disconnect() {
-    GIDSignIn.sharedInstance().disconnect()
+    DispatchQueue.main.async {
+      GIDSignIn.sharedInstance().disconnect()
+    }
   }
   
   @objc func currentUser(_ resolve: RCTPromiseResolveBlock, reject: RCTPromiseRejectBlock) {

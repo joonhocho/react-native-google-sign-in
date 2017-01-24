@@ -46,6 +46,49 @@ Follow Google's official instructions for [iOS](https://developers.google.com/id
 - Add `$(SRCROOT)/../node_modules/react-native-google-sign-in/ios/RNGoogleSignIn`.
 
 
+Modify your `{YourApp}/ios/{YourApp}/AppDelegate.m`:
+```
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
+  NSError* configureError;
+  [[GGLContext sharedInstance] configureWithError: &configureError];
+  NSAssert(!configureError, @"Error configuring Google services: %@", configureError);
+
+  ...add above codes
+}
+
+
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+            options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
+  BOOL handled = [[GIDSignIn sharedInstance] handleURL:url
+                                     sourceApplication:options[UIApplicationOpenURLOptionsSourceApplicationKey]
+                                            annotation:options[UIApplicationOpenURLOptionsAnnotationKey]];
+  return handled;
+}
+
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication
+         annotation:(id)annotation {
+  if ([[GIDSignIn sharedInstance] handleURL:url
+                          sourceApplication:sourceApplication
+                                 annotation:annotation]) {
+    return YES;
+  }
+  return YES;
+}
+```
+
+Modify or add your Swift bridging header, `{YourApp}/ios/{YourApp}-Bridging-Header.h`:
+```
+#import <React/RCTBridgeModule.h>
+#import <React/RCTViewManager.h>
+#import <React/RCTEventEmitter.h>
+#import <Google/SignIn.h>
+```
+
+
 
 ## Usage
 ```javascript

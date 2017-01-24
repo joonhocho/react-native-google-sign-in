@@ -6,6 +6,7 @@ It uses the latest [Google Sign-In SDK](https://developers.google.com/identity/)
 ## Getting started
 
 See [Tested Environments](#tested-environments).
+Let me know if some instructions are missing.
 
 `$ react-native install react-native-google-sign-in`
 

@@ -2,7 +2,7 @@ const ReactNative = require('react-native');
 
 const {
   NativeModules,
-  NativeEventEmitter,
+  DeviceEventEmitter,
 } = ReactNative;
 
 

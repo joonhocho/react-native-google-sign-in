@@ -154,4 +154,4 @@ const GoogleSignIn = {
   },
 };
 
-export default GoogleSignIn;
+module.exports = GoogleSignIn;

@@ -14,10 +14,25 @@ Let me know if some instructions are missing.
 ## Android
 Follow Google's official instructions for [Android](https://developers.google.com/identity/sign-in/android/start-integrating).
 
-Follow everything from the instructions with the following modifications:
+Follow everything from the instructions with the following modifications.
+Some of the following modifications should be done by `react-native install` automatically. If not, do it yourself:
  - Move `google-services.json` to `{YourApp}/android/app/google-services.json`.
- - Modify your `{YourApp}/android/app/build.gradle`:
+ 
+ - Add to your `{YourApp}/android/settings.gradle`:
+```
+include ':react-native-google-sign-in'
+project(':react-native-google-sign-in').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-google-sign-in/android')
+```
 
+ - Modify your `{YourApp}/android/build.gradle`:
+```
+dependencies {
+    classpath 'com.android.tools.build:gradle:2.2.3' // This may need to be updated to >= 2.2.3.
+    classpath 'com.google.gms:google-services:3.0.0' // Add this
+}
+```
+
+ - Modify your `{YourApp}/android/app/build.gradle`:
 ```
 dependencies {
     compile project(':react-native-google-sign-in') // Should be added automatically by react-native link.
@@ -27,6 +42,21 @@ dependencies {
 }
 
 apply plugin: "com.google.gms.google-services" // Add this after dependencies.
+```
+
+ - Modify your `{YourApp}/android/app/src/main/java/com/{YourApp}/MainApplication.java`:
+```
+import com.reactlibrary.googlesignin.RNGoogleSignInPackage; // Add this.
+
+...in your class MainApplication...
+        @Override
+        protected List<ReactPackage> getPackages() {
+            return Arrays.<ReactPackage>asList(
+                    new MainReactPackage(),
+                    new RNGoogleSignInPackage(), // Add this.
+                    ...other packages...
+            );
+        }
 ```
 
 

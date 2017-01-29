@@ -1,7 +1,9 @@
-import {
+const ReactNative = require('react-native');
+
+const {
   NativeModules,
-  DeviceEventEmitter,
-} from 'react-native';
+  NativeEventEmitter,
+} = ReactNative;
 
 
 const {

@@ -1,1 +1,1 @@
-export default from './js/GoogleSignIn';
+module.exports = require('./js/GoogleSignIn');

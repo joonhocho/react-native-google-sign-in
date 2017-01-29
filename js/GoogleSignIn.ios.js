@@ -1,13 +1,15 @@
-import {
+const ReactNative = require('react-native');
+
+const {
   NativeModules,
   NativeEventEmitter,
-} from 'react-native';
-
+} = ReactNative;
 
 const {
   RNGoogleSignIn,
   RNGoogleSignInEvents,
 } = NativeModules;
+
 
 const emitter = new NativeEventEmitter(RNGoogleSignInEvents);
 

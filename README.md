@@ -61,17 +61,13 @@ import com.reactlibrary.googlesignin.RNGoogleSignInPackage; // Add this.
 
 
 ## iOS
-
-Follow Google's official instructions for [iOS](https://developers.google.com/identity/sign-in/ios/start-integrating). Make sure to install Google SDK with CocoaPods. I could not get it working without CocoaPods.
-
+- Make sure you have a Swift Bridging Header for your project. Here's [how to create one](http://www.learnswiftonline.com/getting-started/adding-swift-bridging-header/) if you don't.
+- Follow Google's official instructions for [iOS](https://developers.google.com/identity/sign-in/ios/start-integrating). Make sure to install Google SDK with CocoaPods. I could not get it working without CocoaPods.
 - Open up your project in xcode and right click the package.
-- Click `Add files to 'Your project name'`.
+- Click `Add files to '{YourApp}'`.
 - Select to `{YourApp}/node_modules/react-native-google-sign-in/ios/RNGoogleSignIn`.
 - Click 'Add'.
 - Click your project in the navigator on the left and go to `Build Settings`.
-- Search for `Objective-C Bridging Header` under `Swift Compiler - General`.
-- Double click on the value column.
-- Enter `../node_modules/react-native-google-sign-in/ios/RNGoogleSignIn/RNGoogleSignIn-Bridging-Header.h`
 - Search for `Header Search Paths`.
 - Double click on the value column.
 - Add `$(SRCROOT)/../node_modules/react-native-google-sign-in/ios/RNGoogleSignIn`.
@@ -118,7 +114,7 @@ Add to your `{YourApp}/ios/{YourApp}/AppDelegate.h`:
 ```
 
 
-Add to your Swift bridging header, `{YourApp}/ios/{YourApp}-Bridging-Header.h`:
+Add to your Swift Bridging Header, `{YourApp}/ios/{YourApp}-Bridging-Header.h`:
 ```
 #import <React/RCTBridgeModule.h>
 #import <React/RCTViewManager.h>

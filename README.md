@@ -3,6 +3,8 @@
 https://github.com/devfd/react-native-google-signin is not working and is not being maintained anymore ([See Issue](https://github.com/devfd/react-native-google-signin/issues/182)), so I created this one myself.
 It uses the latest [Google Sign-In SDK](https://developers.google.com/identity/).
 
+For LinkedIn SDK, check out [joonhocho/react-native-linkedin-sdk](https://github.com/joonhocho/react-native-linkedin-sdk)
+
 ## Getting started
 
 See [Tested Environments](#tested-environments).

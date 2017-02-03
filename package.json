@@ -30,8 +30,5 @@
   "bugs": {
     "url": "https://github.com/joonhocho/react-native-google-sign-in/issues"
   },
-  "homepage": "https://github.com/joonhocho/react-native-google-sign-in#readme",
-  "peerDependencies": {
-    "react-native": "^0.40.0"
-  }
+  "homepage": "https://github.com/joonhocho/react-native-google-sign-in#readme"
 }

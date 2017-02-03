@@ -64,7 +64,7 @@ import com.reactlibrary.googlesignin.RNGoogleSignInPackage; // Add this.
 
 ## iOS
 - Make sure you have a Swift Bridging Header for your project. Here's [how to create one](http://www.learnswiftonline.com/getting-started/adding-swift-bridging-header/) if you don't.
-- Follow Google's official instructions for [iOS](https://developers.google.com/identity/sign-in/ios/start-integrating). Make sure to install Google SDK with CocoaPods. I could not get it working without CocoaPods.
+- Follow Google's official instructions for [iOS](https://developers.google.com/identity/sign-in/ios/start-integrating). Make sure to install Google SDK with CocoaPods. I could not get it working without CocoaPods. Once you install CocoaPods to your project, you should always open `YourApp.xcworkspace`, not `YourApp.xcodeproj`, with Xcode to run the app.
 - Open up your project in xcode and right click the package.
 - Click `Add files to '{YourApp}'`.
 - Select to `{YourApp}/node_modules/react-native-google-sign-in/ios/RNGoogleSignIn`.

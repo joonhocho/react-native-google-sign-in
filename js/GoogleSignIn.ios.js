@@ -32,7 +32,7 @@ const GoogleSignIn = {
 
   async signInPromise() {
     const user = await RNGoogleSignIn.currentUser();
-    if (user) return user;
+    if (user) return GoogleSignIn.normalizeUser(user);
 
     return new Promise((resolve, reject) => {
       const offSuccess = GoogleSignIn.onSignIn((data) => {

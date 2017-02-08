@@ -131,7 +131,7 @@ public class RNGoogleSignInModule extends ReactContextBaseJavaModule implements 
         if (serverClientID != null && !serverClientID.isEmpty()) {
             builder.requestIdToken(serverClientID);
             if (offlineAccess) {
-                builder.requestServerAuthCode(serverClientID);
+                builder.requestServerAuthCode(serverClientID, true);
             }
         }
 

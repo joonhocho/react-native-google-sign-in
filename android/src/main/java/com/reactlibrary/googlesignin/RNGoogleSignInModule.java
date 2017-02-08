@@ -107,6 +107,7 @@ public class RNGoogleSignInModule extends ReactContextBaseJavaModule implements 
         String loginHint = config.hasKey("loginHint") ? config.getString("loginHint") : null;
         String serverClientID = config.hasKey("serverClientID") ? config.getString("serverClientID") : RNGoogleSignInModule.serverClientID;
         boolean offlineAccess = config.hasKey("offlineAccess") && config.getBoolean("offlineAccess");
+        boolean forceCodeForRefreshToken = config.hasKey("forceCodeForRefreshToken") && config.getBoolean("forceCodeForRefreshToken");
         String openIDRealm = config.hasKey("openIDRealm") ? config.getString("openIDRealm") : null;
         String accountName = config.hasKey("accountName") ? config.getString("accountName") : null;
         String hostedDomain = config.hasKey("hostedDomain") ? config.getString("hostedDomain") : null;
@@ -131,7 +132,7 @@ public class RNGoogleSignInModule extends ReactContextBaseJavaModule implements 
         if (serverClientID != null && !serverClientID.isEmpty()) {
             builder.requestIdToken(serverClientID);
             if (offlineAccess) {
-                builder.requestServerAuthCode(serverClientID, true);
+                builder.requestServerAuthCode(serverClientID, forceCodeForRefreshToken);
             }
         }
 

@@ -160,10 +160,12 @@ async yourMethod() {
 
     // Android
     // Whether to request server auth code. Make sure to provide `serverClientID`.
+    // https://developers.google.com/android/reference/com/google/android/gms/auth/api/signin/GoogleSignInOptions.Builder.html#requestServerAuthCode(java.lang.String, boolean)
     offlineAccess: boolean,
     
     // Android
     // Whether to force code for refresh token.
+    // https://developers.google.com/android/reference/com/google/android/gms/auth/api/signin/GoogleSignInOptions.Builder.html#requestServerAuthCode(java.lang.String, boolean)
     forceCodeForRefreshToken: boolean,
 
     // iOS

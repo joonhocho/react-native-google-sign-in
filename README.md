@@ -161,6 +161,10 @@ async yourMethod() {
     // Android
     // Whether to request server auth code. Make sure to provide `serverClientID`.
     offlineAccess: boolean,
+    
+    // Android
+    // Whether to force code for refresh token.
+    forceCodeForRefreshToken: boolean,
 
     // iOS
     // https://developers.google.com/identity/sign-in/ios/api/interface_g_i_d_sign_in.html#a211c074872cd542eda53f696c5eef871

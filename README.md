@@ -7,7 +7,7 @@ For LinkedIn SDK, check out [joonhocho/react-native-linkedin-sdk](https://github
 
 ## Getting started
 
-See [Tested Environments](#tested-environments).
+Tested with React Native 0.39 and 0.40. Also, see [Tested Environments](#tested-environments).
 Let me know if some instructions are missing.
 
 `$ react-native install react-native-google-sign-in`

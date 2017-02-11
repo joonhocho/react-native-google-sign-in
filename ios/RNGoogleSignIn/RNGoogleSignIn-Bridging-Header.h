@@ -2,7 +2,7 @@
 #define RNGoogleSignIn_Bridging_Header_h
 
 #if __has_include(<React/RCTBridgeModule.h>)
-  #import <React/RCTBridgeModule.hh>
+  #import <React/RCTBridgeModule.h>
 #elif __has_include("RCTBridgeModule.h")
   #import "RCTBridgeModule.h"
 #else
@@ -10,7 +10,7 @@
 #endif
 
 #if __has_include(<React/RCTViewManager.h>)
-  #import <React/RCTViewManager.hh>
+  #import <React/RCTViewManager.h>
 #elif __has_include("RCTViewManager.h")
   #import "RCTViewManager.h"
 #else
@@ -18,7 +18,7 @@
 #endif
 
 #if __has_include(<React/RCTEventEmitter.h>)
-  #import <React/RCTEventEmitter.hh>
+  #import <React/RCTEventEmitter.h>
 #elif __has_include("RCTEventEmitter.h")
   #import "RCTEventEmitter.h"
 #else

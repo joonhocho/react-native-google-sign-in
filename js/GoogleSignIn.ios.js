@@ -118,6 +118,24 @@ const GoogleSignIn = {
     RNGoogleSignIn.signInSilently();
   },
 
+  // Sign in without a prompt
+  // If accessToken is expiring, refresh it
+  signInSilentlyPromise() {
+    return new Promise((resolve, reject) => {
+      const offSuccess = GoogleSignIn.onSignIn((data) => {
+        offSuccess();
+        offError();
+        resolve(GoogleSignIn.normalizeUser(data));
+      });
+      const offError = GoogleSignIn.onSignInError((error) => {
+        offSuccess();
+        offError();
+        reject(error);
+      });
+      RNGoogleSignIn.signInSilently();
+    });
+  },
+
   disconnect() {
     RNGoogleSignIn.disconnect();
   },

@@ -124,6 +124,14 @@ Add to your Swift Bridging Header, `{YourApp}/ios/{YourApp}-Bridging-Header.h`:
 #import <Google/SignIn.h>
 ```
 
+Or, if you are using RN <= 0.39:
+```
+#import "RCTBridgeModule.h"
+#import "RCTViewManager.h"
+#import "RCTEventEmitter.h"
+#import <Google/SignIn.h>
+```
+
 
 
 ## Usage

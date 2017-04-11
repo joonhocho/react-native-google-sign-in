@@ -37,7 +37,9 @@ dependencies {
  - Modify your `{YourApp}/android/app/build.gradle`:
 ```
 dependencies {
-    compile project(':react-native-google-sign-in') // Should be added automatically by react-native link.
+    compile(project(":react-native-google-sign-in")) { // ADD this
+        exclude group: "com.google.android.gms"
+    } 
     ...your modules...
     compile "com.google.android.gms:play-services-auth:10.0.1" // Add this, not 9.8.0 (from instructions).
     compile "com.facebook.react:react-native:+"

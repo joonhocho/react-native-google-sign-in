@@ -197,6 +197,10 @@ async yourMethod() {
 }
 ```
 
+See [js/GoogleSignIn.ios.js](https://github.com/joonhocho/react-native-google-sign-in/blob/master/js/GoogleSignIn.ios.js) for supported iOS APIs.
+
+See [js/GoogleSignIn.android.js](https://github.com/joonhocho/react-native-google-sign-in/blob/master/js/GoogleSignIn.android.js) for supported Android APIs.
+
 
 ## Tested Environments
 

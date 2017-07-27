@@ -28,14 +28,10 @@
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		AC103A361E3FF2B400FB0762 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AC103A351E3FF2B400FB0762 /* GoogleService-Info.plist */; };
 		AC103A371E3FF2B400FB0762 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AC103A351E3FF2B400FB0762 /* GoogleService-Info.plist */; };
-		AC103A571E3FF37E00FB0762 /* RNGoogleSignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC103A531E3FF37E00FB0762 /* RNGoogleSignIn.swift */; };
-		AC103A581E3FF37E00FB0762 /* RNGoogleSignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC103A531E3FF37E00FB0762 /* RNGoogleSignIn.swift */; };
-		AC103A591E3FF37E00FB0762 /* RNGoogleSignInBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = AC103A541E3FF37E00FB0762 /* RNGoogleSignInBridge.m */; };
-		AC103A5A1E3FF37E00FB0762 /* RNGoogleSignInBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = AC103A541E3FF37E00FB0762 /* RNGoogleSignInBridge.m */; };
-		AC103A5B1E3FF37E00FB0762 /* RNGoogleSignInEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC103A551E3FF37E00FB0762 /* RNGoogleSignInEvents.swift */; };
-		AC103A5C1E3FF37E00FB0762 /* RNGoogleSignInEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC103A551E3FF37E00FB0762 /* RNGoogleSignInEvents.swift */; };
-		AC103A5D1E3FF37E00FB0762 /* RNGoogleSignInEventsBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = AC103A561E3FF37E00FB0762 /* RNGoogleSignInEventsBridge.m */; };
-		AC103A5E1E3FF37E00FB0762 /* RNGoogleSignInEventsBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = AC103A561E3FF37E00FB0762 /* RNGoogleSignInEventsBridge.m */; };
+		AC7561C61F29D6A3009FCD09 /* RNGoogleSignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7561C21F29D6A3009FCD09 /* RNGoogleSignIn.swift */; };
+		AC7561C71F29D6A3009FCD09 /* RNGoogleSignInBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = AC7561C31F29D6A3009FCD09 /* RNGoogleSignInBridge.m */; };
+		AC7561C81F29D6A3009FCD09 /* RNGoogleSignInEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7561C41F29D6A3009FCD09 /* RNGoogleSignInEvents.swift */; };
+		AC7561C91F29D6A3009FCD09 /* RNGoogleSignInEventsBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = AC7561C51F29D6A3009FCD09 /* RNGoogleSignInEventsBridge.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -252,12 +248,12 @@
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 		A265A4C0BCF38952585F7999 /* Pods-ExampleApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExampleApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-ExampleApp/Pods-ExampleApp.release.xcconfig"; sourceTree = "<group>"; };
 		AC103A351E3FF2B400FB0762 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "ExampleApp/GoogleService-Info.plist"; sourceTree = "<group>"; };
-		AC103A521E3FF37E00FB0762 /* RNGoogleSignIn-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RNGoogleSignIn-Bridging-Header.h"; sourceTree = "<group>"; };
-		AC103A531E3FF37E00FB0762 /* RNGoogleSignIn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNGoogleSignIn.swift; sourceTree = "<group>"; };
-		AC103A541E3FF37E00FB0762 /* RNGoogleSignInBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNGoogleSignInBridge.m; sourceTree = "<group>"; };
-		AC103A551E3FF37E00FB0762 /* RNGoogleSignInEvents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNGoogleSignInEvents.swift; sourceTree = "<group>"; };
-		AC103A561E3FF37E00FB0762 /* RNGoogleSignInEventsBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNGoogleSignInEventsBridge.m; sourceTree = "<group>"; };
 		AC103A621E3FF54900FB0762 /* ExampleApp-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "ExampleApp-Bridging-Header.h"; path = "ExampleApp/ExampleApp-Bridging-Header.h"; sourceTree = "<group>"; };
+		AC7561C11F29D6A3009FCD09 /* RNGoogleSignIn-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RNGoogleSignIn-Bridging-Header.h"; sourceTree = "<group>"; };
+		AC7561C21F29D6A3009FCD09 /* RNGoogleSignIn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNGoogleSignIn.swift; sourceTree = "<group>"; };
+		AC7561C31F29D6A3009FCD09 /* RNGoogleSignInBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNGoogleSignInBridge.m; sourceTree = "<group>"; };
+		AC7561C41F29D6A3009FCD09 /* RNGoogleSignInEvents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNGoogleSignInEvents.swift; sourceTree = "<group>"; };
+		AC7561C51F29D6A3009FCD09 /* RNGoogleSignInEventsBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNGoogleSignInEventsBridge.m; sourceTree = "<group>"; };
 		E4DC691BFF23600A9513DF1D /* Pods-ExampleApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExampleApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ExampleApp/Pods-ExampleApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -459,7 +455,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
-				AC103A511E3FF37D00FB0762 /* RNGoogleSignIn */,
+				AC7561C01F29D6A3009FCD09 /* RNGoogleSignIn */,
 				AC103A351E3FF2B400FB0762 /* GoogleService-Info.plist */,
 				13B07FAE1A68108700A75B9A /* ExampleApp */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
@@ -481,17 +477,17 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		AC103A511E3FF37D00FB0762 /* RNGoogleSignIn */ = {
+		AC7561C01F29D6A3009FCD09 /* RNGoogleSignIn */ = {
 			isa = PBXGroup;
 			children = (
-				AC103A521E3FF37E00FB0762 /* RNGoogleSignIn-Bridging-Header.h */,
-				AC103A531E3FF37E00FB0762 /* RNGoogleSignIn.swift */,
-				AC103A541E3FF37E00FB0762 /* RNGoogleSignInBridge.m */,
-				AC103A551E3FF37E00FB0762 /* RNGoogleSignInEvents.swift */,
-				AC103A561E3FF37E00FB0762 /* RNGoogleSignInEventsBridge.m */,
+				AC7561C11F29D6A3009FCD09 /* RNGoogleSignIn-Bridging-Header.h */,
+				AC7561C21F29D6A3009FCD09 /* RNGoogleSignIn.swift */,
+				AC7561C31F29D6A3009FCD09 /* RNGoogleSignInBridge.m */,
+				AC7561C41F29D6A3009FCD09 /* RNGoogleSignInEvents.swift */,
+				AC7561C51F29D6A3009FCD09 /* RNGoogleSignInEventsBridge.m */,
 			);
 			name = RNGoogleSignIn;
-			path = "../node_modules/react-native-google-sign-in/ios/RNGoogleSignIn";
+			path = ../../ios/RNGoogleSignIn;
 			sourceTree = "<group>";
 		};
 		F5E41128568A22C312DD6F93 /* Frameworks */ = {
@@ -943,11 +939,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AC103A5E1E3FF37E00FB0762 /* RNGoogleSignInEventsBridge.m in Sources */,
-				AC103A5A1E3FF37E00FB0762 /* RNGoogleSignInBridge.m in Sources */,
-				AC103A581E3FF37E00FB0762 /* RNGoogleSignIn.swift in Sources */,
 				00E356F31AD99517003FC87E /* ExampleAppTests.m in Sources */,
-				AC103A5C1E3FF37E00FB0762 /* RNGoogleSignInEvents.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -955,12 +947,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AC103A571E3FF37E00FB0762 /* RNGoogleSignIn.swift in Sources */,
+				AC7561C61F29D6A3009FCD09 /* RNGoogleSignIn.swift in Sources */,
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
-				AC103A5D1E3FF37E00FB0762 /* RNGoogleSignInEventsBridge.m in Sources */,
-				AC103A5B1E3FF37E00FB0762 /* RNGoogleSignInEvents.swift in Sources */,
+				AC7561C91F29D6A3009FCD09 /* RNGoogleSignInEventsBridge.m in Sources */,
+				AC7561C81F29D6A3009FCD09 /* RNGoogleSignInEvents.swift in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
-				AC103A591E3FF37E00FB0762 /* RNGoogleSignInBridge.m in Sources */,
+				AC7561C71F29D6A3009FCD09 /* RNGoogleSignInBridge.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -991,7 +983,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0D236227F9D6978CE49672B2 /* Pods-ExampleAppTests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = J623D3MCYC;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -1011,7 +1003,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 2560E69B2E933C70A3721E25 /* Pods-ExampleAppTests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
 				DEVELOPMENT_TEAM = J623D3MCYC;

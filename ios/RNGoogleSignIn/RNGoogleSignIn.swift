@@ -107,10 +107,10 @@ class RNGoogleSignIn: NSObject, GIDSignInUIDelegate {
   }
   
   func sign(_ signIn: GIDSignIn!, present viewController: UIViewController!) {
-    let parent = self.topMostViewController()
+    let parent = topMostViewController()
     parent?.present(viewController, animated:true, completion:nil)
   }
-
+    
   func topMostViewController() -> UIViewController? {
     var topController = UIApplication.shared.keyWindow?.rootViewController
     while topController?.presentedViewController != nil {

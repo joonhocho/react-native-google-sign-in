@@ -81,11 +81,11 @@ Add to your `{YourApp}/ios/{YourApp}/AppDelegate.m`:
 ```
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-  NSError* configureError;
-  [[GGLContext sharedInstance] configureWithError: &configureError];
-  NSAssert(!configureError, @"Error configuring Google services: %@", configureError);
+  NSString *filePath = [[NSBundle mainBundle] pathForResource:@"GoogleService-Info" ofType:@"plist"];
+  NSDictionary *plistDict = [NSDictionary dictionaryWithContentsOfFile:filePath];
+  [GIDSignIn sharedInstance].clientID = [plistDict objectForKey:@"CLIENT_ID"];
 
-  ...add above codes
+  ...add above code
 }
 
 
@@ -114,7 +114,7 @@ Add to your `{YourApp}/ios/{YourApp}/AppDelegate.m`:
 
 Add to your `{YourApp}/ios/{YourApp}/AppDelegate.h`:
 ```
-#import <Google/SignIn.h>
+#import <GoogleSignIn/GoogleSignIn.h>
 ```
 
 
@@ -123,7 +123,7 @@ Add to your Swift Bridging Header, `{YourApp}/ios/{YourApp}-Bridging-Header.h`:
 #import <React/RCTBridgeModule.h>
 #import <React/RCTViewManager.h>
 #import <React/RCTEventEmitter.h>
-#import <Google/SignIn.h>
+#import <GoogleSignIn/GoogleSignIn.h>
 ```
 
 Or, if you are using RN <= 0.39:
@@ -131,7 +131,7 @@ Or, if you are using RN <= 0.39:
 #import "RCTBridgeModule.h"
 #import "RCTViewManager.h"
 #import "RCTEventEmitter.h"
-#import <Google/SignIn.h>
+#import <GoogleSignIn/GoogleSignIn.h>
 ```
 
 

@@ -65,8 +65,92 @@ import com.reactlibrary.googlesignin.RNGoogleSignInPackage; // Add this.
 
 
 ## iOS
-- Make sure you have a Swift Bridging Header for your project. Here's [how to create one](http://www.learnswiftonline.com/getting-started/adding-swift-bridging-header/) if you don't.
-- Follow Google's official instructions for [iOS](https://developers.google.com/identity/sign-in/ios/start-integrating). Make sure to install Google SDK with CocoaPods. I could not get it working without CocoaPods. Once you install CocoaPods to your project, you should always open `YourApp.xcworkspace`, not `YourApp.xcodeproj`, with Xcode to run the app.
+
+### 1. Install Google SignIn SDK
+
+Follow Google's official instructions for [iOS](https://developers.google.com/identity/sign-in/ios/start-integrating). Make sure to install Google SDK with CocoaPods. I could not get it working without CocoaPods. Once you install CocoaPods to your project, you should always open `YourApp.xcworkspace`, not `YourApp.xcodeproj`, with Xcode to run the app.
+
+### 2. Configure Google SignIn SDK to integrate with react-native-google-sign-in
+
+Add to your `{YourApp}/ios/{YourApp}/AppDelegate.h`:
+```
+#import <GoogleSignIn/GoogleSignIn.h>
+
+```
+
+Add to your `{YourApp}/ios/{YourApp}/AppDelegate.m`:
+```
+- (BOOL)application:(UIApplication *)application
+didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+
+  // Some previous code
+
+  // BEGIN - GOOGLE SIGNIN SDK CHANGES
+  NSString *filePath = [[NSBundle mainBundle] pathForResource:@"GoogleService-Info" ofType:@"plist"];
+  NSDictionary *plistDict = [NSDictionary dictionaryWithContentsOfFile:filePath];
+  [GIDSignIn sharedInstance].clientID = [plistDict objectForKey:@"CLIENT_ID"];
+  // END - GOOGLE SIGNIN SDK CHANGES
+
+  return YES;
+}
+
+// BEGIN - FACEBOOK AND GOOGLE SIGNIN SDK CHANGES
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+            options:(NSDictionary *)options {
+  return [[FBSDKApplicationDelegate sharedInstance] application:application
+                                                        openURL:url
+                                                        options:options
+          ] ||
+         [[GIDSignIn sharedInstance] handleURL:url
+                             sourceApplication:options[UIApplicationOpenURLOptionsSourceApplicationKey]
+                                    annotation:options[UIApplicationOpenURLOptionsAnnotationKey]];
+}
+
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication
+         annotation:(id)annotation {
+  return [[FBSDKApplicationDelegate sharedInstance] application:application
+                                                        openURL:url
+                                              sourceApplication:sourceApplication
+                                                     annotation:annotation
+          ] ||
+         [[GIDSignIn sharedInstance] handleURL:url
+                             sourceApplication:sourceApplication
+                                    annotation:annotation
+          ];
+}
+// END - FACEBOOK AND GOOGLE SIGNIN SDK CHANGES
+```
+
+Note: if don't have Facebook integration just delete the parts with FBSDKApplicationDelegate. To better understand Facebook Login SDK please consult Facebook documentation.
+
+
+### 3. Configure the Swift Bridging Header
+
+Make sure you have a Swift Bridging Header for your project. 
+
+Note: if you don't have a Swift Bridging Header, the easiest way is to create a new Swift File: Select your project, File/New File..., Select Swift File, Next, Choose File Destination (make sure {YourApp} is selected on Targest list), Create. Then confirm the creation of the Swift Bridging Header.
+
+Add to your Swift Bridging Header, `{YourApp}/ios/{YourApp}-Bridging-Header.h`:
+```
+#import <React/RCTBridgeModule.h>
+#import <React/RCTViewManager.h>
+#import <React/RCTEventEmitter.h>
+#import <GoogleSignIn/GoogleSignIn.h>
+```
+
+Or, if you are using RN <= 0.39:
+```
+#import "RCTBridgeModule.h"
+#import "RCTViewManager.h"
+#import "RCTEventEmitter.h"
+#import <GoogleSignIn/GoogleSignIn.h>
+```
+
+### 4. Add react-native-google-sign-in to XCode
+
 - Open up your project in xcode and right click the package.
 - Click `Add files to '{YourApp}'`.
 - Select to `{YourApp}/node_modules/react-native-google-sign-in/ios/RNGoogleSignIn`.
@@ -75,64 +159,6 @@ import com.reactlibrary.googlesignin.RNGoogleSignInPackage; // Add this.
 - Search for `Header Search Paths`.
 - Double click on the value column.
 - Add `$(SRCROOT)/../node_modules/react-native-google-sign-in/ios/RNGoogleSignIn`.
-
-
-Add to your `{YourApp}/ios/{YourApp}/AppDelegate.m`:
-```
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
-  NSError* configureError;
-  [[GGLContext sharedInstance] configureWithError: &configureError];
-  NSAssert(!configureError, @"Error configuring Google services: %@", configureError);
-
-  ...add above codes
-}
-
-
-- (BOOL)application:(UIApplication *)application
-            openURL:(NSURL *)url
-            options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
-  BOOL handled = [[GIDSignIn sharedInstance] handleURL:url
-                                     sourceApplication:options[UIApplicationOpenURLOptionsSourceApplicationKey]
-                                            annotation:options[UIApplicationOpenURLOptionsAnnotationKey]];
-  return handled;
-}
-
-- (BOOL)application:(UIApplication *)application
-            openURL:(NSURL *)url
-  sourceApplication:(NSString *)sourceApplication
-         annotation:(id)annotation {
-  if ([[GIDSignIn sharedInstance] handleURL:url
-                          sourceApplication:sourceApplication
-                                 annotation:annotation]) {
-    return YES;
-  }
-  return YES;
-}
-```
-
-
-Add to your `{YourApp}/ios/{YourApp}/AppDelegate.h`:
-```
-#import <Google/SignIn.h>
-```
-
-
-Add to your Swift Bridging Header, `{YourApp}/ios/{YourApp}-Bridging-Header.h`:
-```
-#import <React/RCTBridgeModule.h>
-#import <React/RCTViewManager.h>
-#import <React/RCTEventEmitter.h>
-#import <Google/SignIn.h>
-```
-
-Or, if you are using RN <= 0.39:
-```
-#import "RCTBridgeModule.h"
-#import "RCTViewManager.h"
-#import "RCTEventEmitter.h"
-#import <Google/SignIn.h>
-```
 
 
 

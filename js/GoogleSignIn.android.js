@@ -23,6 +23,10 @@ const GoogleSignIn = {
   standard: RNGoogleSignIn.standard,
   wide: RNGoogleSignIn.wide,
 
+  constructor() {
+    this._user = null;
+  },
+
   configure(config) {
     return new Promise((resolve, reject) => {
       const offSuccess = GoogleSignIn.onApiConnected(() => {
@@ -58,6 +62,35 @@ const GoogleSignIn = {
       RNGoogleSignIn.signIn();
     });
   },
+
+  currentUserAsync() {
+    return new Promise((resolve, reject) => {
+      const sucessCb = DeviceEventEmitter.addListener('RNGoogleSignInSuccess', (user) => {
+        this._user = {...user};
+
+        RNGoogleSignIn.getAccessToken(user.email, user.scopes).then((token) => {
+          this._user.accessToken = token;
+          this._removeListeners(sucessCb, errorCb);
+          resolve(this._user);
+        })
+        .catch(err => {
+          this._removeListeners(sucessCb, errorCb);
+          resolve(this._user);
+        });
+      });
+
+      const errorCb = DeviceEventEmitter.addListener('RNGoogleSignInError', (err) => {
+        this._removeListeners(sucessCb, errorCb);
+        resolve(null);
+      });
+
+      RNGoogleSignIn.currentUserAsync();
+    });
+},
+
+_removeListeners(...listeners) {
+    listeners.forEach(lt => lt.remove());
+},
 
   normalizeUser(user) {
     const {
@@ -104,6 +137,7 @@ const GoogleSignIn = {
         reject(error);
       });
       RNGoogleSignIn.signOut();
+      this._user = null;
     });
   },
 

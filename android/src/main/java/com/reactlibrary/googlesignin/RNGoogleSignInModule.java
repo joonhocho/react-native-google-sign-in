@@ -261,6 +261,41 @@ public class RNGoogleSignInModule extends ReactContextBaseJavaModule implements 
     }
 
     @ReactMethod
+    public void currentUserAsync() {
+        if (mGoogleApiClient == null) {
+            sendError("RNGoogleSignInError", ERROR_CODE_NULL_API_CLIENT, ERROR_MESSAGE_NULL_API_CLIENT);
+            return;
+        }
+
+        final Activity activity = getCurrentActivity();
+
+        if (activity == null) {
+            sendError("RNGoogleSignInError", -1, "No activity");
+            return;
+        }
+
+        activity.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                OptionalPendingResult<GoogleSignInResult> opr = Auth.GoogleSignInApi.silentSignIn(mGoogleApiClient);
+
+                if (opr.isDone()) {
+                    GoogleSignInResult result = opr.get();
+                    handleSignInResult(result);
+                } else {
+                    opr.setResultCallback(new ResultCallback<GoogleSignInResult>() {
+                        @Override
+                        public void onResult(GoogleSignInResult googleSignInResult) {
+                            handleSignInResult(googleSignInResult);
+                        }
+                    });
+                }
+            }
+        });
+    }
+
+
+    @ReactMethod
     public void signInSilently() {
         if (mGoogleApiClient == null) {
             sendError("RNGoogleSignInError", ERROR_CODE_NULL_API_CLIENT, ERROR_MESSAGE_NULL_API_CLIENT);
@@ -299,8 +334,23 @@ public class RNGoogleSignInModule extends ReactContextBaseJavaModule implements 
         }
     }
 
+    @ReactMethod
+    public void getAccessToken(String email, String scopes, Promise promise) {
+        Account acct = new Account(email, "com.google");
+
+        try {
+           String token = GoogleAuthUtil.getToken(getReactApplicationContext(), acct, "oauth2:" + scopes);
+           promise.resolve(token);
+        } catch (IOException e) {
+           promise.reject(e);
+           e.printStackTrace();
+        } catch (GoogleAuthException e) {
+           promise.reject(e);
+           e.printStackTrace();
+        }
+    }
+
     private void handleSignInResult(GoogleSignInResult result) {
-        log("handle sign in");
         if (result.isSuccess()) {
             log("sign in success");
             WritableMap params = Arguments.createMap();

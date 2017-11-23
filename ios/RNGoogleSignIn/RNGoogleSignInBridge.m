@@ -21,8 +21,8 @@
 RCT_EXTERN_METHOD(configure:(NSDictionary *)config);
 RCT_EXTERN_METHOD(signIn);
 RCT_EXTERN_METHOD(signOut:
-									(RCTPromiseResolveBlock)resolve
-									reject:(RCTPromiseRejectBlock)reject);
+                  (RCTPromiseResolveBlock)resolve
+                  reject:(RCTPromiseRejectBlock)reject);
 RCT_EXTERN_METHOD(signInSilently);
 RCT_EXTERN_METHOD(disconnect);
 RCT_EXTERN_METHOD(currentUser:

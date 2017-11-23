@@ -65,8 +65,29 @@ import com.reactlibrary.googlesignin.RNGoogleSignInPackage; // Add this.
 
 
 ## iOS
+
+### (prerequisite) Setup Swift Bridging Header
 - Make sure you have a Swift Bridging Header for your project. Here's [how to create one](http://www.learnswiftonline.com/getting-started/adding-swift-bridging-header/) if you don't.
-- Follow Google's official instructions for [iOS](https://developers.google.com/identity/sign-in/ios/start-integrating). Make sure to install Google SDK with CocoaPods. I could not get it working without CocoaPods. Once you install CocoaPods to your project, you should always open `YourApp.xcworkspace`, not `YourApp.xcodeproj`, with Xcode to run the app.
+- ![](https://i.imgur.com/1XgTv5h.png)
+
+### Manually download and install Google SignIn SDK (Without CocoaPods)
+- At the time of writing, `Google Sign-In SDK 4.1.0` is the latest.
+- Follow Google's official instructions for [iOS](https://developers.google.com/identity/sign-in/ios/start-integrating). Make sure to [install Google SDK *WITHOUT* CocoaPods](https://developers.google.com/identity/sign-in/ios/sdk/). I could not get it working with CocoaPods.
+- It's important to follow every instruction!
+- Make sure to properly add the following frameworks according to the Google's instructions:
+  - GoogleSignIn.bundle
+  - GoogleSignIn.framework
+  - GoogleSignInDependencies.framework
+  - SystemConfiguration.framework
+  - SafariServices.framework
+- Here are some screenshots that shows proper installations (Refer to ExampleApp):
+
+  ![](https://i.imgur.com/kShh5Ey.png)
+  ![](https://i.imgur.com/IefwOOn.png)
+  ![](https://i.imgur.com/IUMj8GF.png)
+  ![](https://i.imgur.com/KwXekFn.png)
+  
+  
 - Open up your project in xcode and right click the package.
 - Click `Add files to '{YourApp}'`.
 - Select to `{YourApp}/node_modules/react-native-google-sign-in/ios/RNGoogleSignIn`.
@@ -75,19 +96,21 @@ import com.reactlibrary.googlesignin.RNGoogleSignInPackage; // Add this.
 - Search for `Header Search Paths`.
 - Double click on the value column.
 - Add `$(SRCROOT)/../node_modules/react-native-google-sign-in/ios/RNGoogleSignIn`.
+- Screenshots:
+  ![](https://i.imgur.com/h8ZWoS4.png)
+  
 
 
 Add to your `{YourApp}/ios/{YourApp}/AppDelegate.m`:
 ```
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-  NSError* configureError;
-  [[GGLContext sharedInstance] configureWithError: &configureError];
-  NSAssert(!configureError, @"Error configuring Google services: %@", configureError);
+  NSString *filePath = [[NSBundle mainBundle] pathForResource:@"GoogleService-Info" ofType:@"plist"];
+  NSDictionary *plistDict = [NSDictionary dictionaryWithContentsOfFile:filePath];
+  [GIDSignIn sharedInstance].clientID = [plistDict objectForKey:@"CLIENT_ID"];
 
   ...add above codes
 }
-
 
 - (BOOL)application:(UIApplication *)application
             openURL:(NSURL *)url
@@ -114,7 +137,7 @@ Add to your `{YourApp}/ios/{YourApp}/AppDelegate.m`:
 
 Add to your `{YourApp}/ios/{YourApp}/AppDelegate.h`:
 ```
-#import <Google/SignIn.h>
+#import <GoogleSignIn/GoogleSignIn.h>
 ```
 
 
@@ -123,7 +146,7 @@ Add to your Swift Bridging Header, `{YourApp}/ios/{YourApp}-Bridging-Header.h`:
 #import <React/RCTBridgeModule.h>
 #import <React/RCTViewManager.h>
 #import <React/RCTEventEmitter.h>
-#import <Google/SignIn.h>
+#import <GoogleSignIn/GoogleSignIn.h>
 ```
 
 Or, if you are using RN <= 0.39:
@@ -131,7 +154,7 @@ Or, if you are using RN <= 0.39:
 #import "RCTBridgeModule.h"
 #import "RCTViewManager.h"
 #import "RCTEventEmitter.h"
-#import <Google/SignIn.h>
+#import <GoogleSignIn/GoogleSignIn.h>
 ```
 
 

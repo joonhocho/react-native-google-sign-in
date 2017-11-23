@@ -72,7 +72,7 @@ import com.reactlibrary.googlesignin.RNGoogleSignInPackage; // Add this.
 
 ### Manually download and install Google SignIn SDK (Without CocoaPods)
 - At the time of writing, `Google Sign-In SDK 4.1.0` is the latest.
-- Follow Google's official instructions for [iOS](https://developers.google.com/identity/sign-in/ios/start-integrating). Make sure to [install Google SDK *WITHOUT* CocoaPods](https://developers.google.com/identity/sign-in/ios/sdk/). I could not get it working with CocoaPods.
+- Follow Google's official instructions, [Install Google SDK *WITHOUT* CocoaPods](https://developers.google.com/identity/sign-in/ios/sdk/). I could not get it working with CocoaPods.
 - It's important to follow every instruction!
 - Make sure to properly add the following frameworks according to the Google's instructions:
   - GoogleSignIn.bundle

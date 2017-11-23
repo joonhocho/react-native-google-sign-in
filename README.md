@@ -103,47 +103,52 @@ import com.reactlibrary.googlesignin.RNGoogleSignInPackage; // Add this.
 
 
 Add to your `{YourApp}/ios/{YourApp}/AppDelegate.m`:
-```
+```objective-c
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+  // ADD THE FOLLOWING CODE
   NSString *filePath = [[NSBundle mainBundle] pathForResource:@"GoogleService-Info" ofType:@"plist"];
   NSDictionary *plistDict = [NSDictionary dictionaryWithContentsOfFile:filePath];
   [GIDSignIn sharedInstance].clientID = [plistDict objectForKey:@"CLIENT_ID"];
-
-  ...add above codes
+  // ADD THE ABOVE CODE
+  ...your code
 }
 
 - (BOOL)application:(UIApplication *)application
             openURL:(NSURL *)url
             options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
+  // ADD THE FOLLOWING CODE
   BOOL handled = [[GIDSignIn sharedInstance] handleURL:url
                                      sourceApplication:options[UIApplicationOpenURLOptionsSourceApplicationKey]
                                             annotation:options[UIApplicationOpenURLOptionsAnnotationKey]];
   return handled;
+  // ADD THE ABOVE CODE
 }
 
 - (BOOL)application:(UIApplication *)application
             openURL:(NSURL *)url
   sourceApplication:(NSString *)sourceApplication
          annotation:(id)annotation {
+  // ADD THE FOLLOWING CODE
   if ([[GIDSignIn sharedInstance] handleURL:url
                           sourceApplication:sourceApplication
                                  annotation:annotation]) {
     return YES;
   }
+  // ADD THE ABOVE CODE
   return YES;
 }
 ```
 
 
 Add to your `{YourApp}/ios/{YourApp}/AppDelegate.h`:
-```
+```objective-c
 #import <GoogleSignIn/GoogleSignIn.h>
 ```
 
 
 Add to your Swift Bridging Header, `{YourApp}/ios/{YourApp}-Bridging-Header.h`:
-```
+```objective-c
 #import <React/RCTBridgeModule.h>
 #import <React/RCTViewManager.h>
 #import <React/RCTEventEmitter.h>
@@ -151,7 +156,7 @@ Add to your Swift Bridging Header, `{YourApp}/ios/{YourApp}-Bridging-Header.h`:
 ```
 
 Or, if you are using RN <= 0.39:
-```
+```objective-c
 #import "RCTBridgeModule.h"
 #import "RCTViewManager.h"
 #import "RCTEventEmitter.h"

@@ -12,6 +12,6 @@
 #import <React/RCTBridgeModule.h>
 #import <React/RCTViewManager.h>
 #import <React/RCTEventEmitter.h>
-#import <Google/SignIn.h>
+#import <GoogleSignIn/GoogleSignIn.h>
 
 #endif /* ExampleApp_Bridging_Header_h */

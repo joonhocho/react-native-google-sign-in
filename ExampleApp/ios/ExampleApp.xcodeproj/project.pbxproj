@@ -28,10 +28,15 @@
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		AC103A361E3FF2B400FB0762 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AC103A351E3FF2B400FB0762 /* GoogleService-Info.plist */; };
 		AC103A371E3FF2B400FB0762 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AC103A351E3FF2B400FB0762 /* GoogleService-Info.plist */; };
+		AC3D4E1F1FC603E300A1D520 /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC3D4E1E1FC603E300A1D520 /* SafariServices.framework */; };
+		AC3D4E211FC603F200A1D520 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC3D4E201FC603F200A1D520 /* SystemConfiguration.framework */; };
 		AC7561C61F29D6A3009FCD09 /* RNGoogleSignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7561C21F29D6A3009FCD09 /* RNGoogleSignIn.swift */; };
 		AC7561C71F29D6A3009FCD09 /* RNGoogleSignInBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = AC7561C31F29D6A3009FCD09 /* RNGoogleSignInBridge.m */; };
 		AC7561C81F29D6A3009FCD09 /* RNGoogleSignInEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7561C41F29D6A3009FCD09 /* RNGoogleSignInEvents.swift */; };
 		AC7561C91F29D6A3009FCD09 /* RNGoogleSignInEventsBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = AC7561C51F29D6A3009FCD09 /* RNGoogleSignInEventsBridge.m */; };
+		ACA75EDD1FC6104300E21AD3 /* GoogleSignInDependencies.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACA75EC11FC6104300E21AD3 /* GoogleSignInDependencies.framework */; };
+		ACA75EDE1FC6104300E21AD3 /* GoogleSignIn.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = ACA75EDB1FC6104300E21AD3 /* GoogleSignIn.bundle */; };
+		ACA75EDF1FC6104300E21AD3 /* GoogleSignIn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACA75EDC1FC6104300E21AD3 /* GoogleSignIn.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -249,11 +254,16 @@
 		A265A4C0BCF38952585F7999 /* Pods-ExampleApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExampleApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-ExampleApp/Pods-ExampleApp.release.xcconfig"; sourceTree = "<group>"; };
 		AC103A351E3FF2B400FB0762 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "ExampleApp/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		AC103A621E3FF54900FB0762 /* ExampleApp-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "ExampleApp-Bridging-Header.h"; path = "ExampleApp/ExampleApp-Bridging-Header.h"; sourceTree = "<group>"; };
+		AC3D4E1E1FC603E300A1D520 /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
+		AC3D4E201FC603F200A1D520 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		AC7561C11F29D6A3009FCD09 /* RNGoogleSignIn-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RNGoogleSignIn-Bridging-Header.h"; sourceTree = "<group>"; };
 		AC7561C21F29D6A3009FCD09 /* RNGoogleSignIn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNGoogleSignIn.swift; sourceTree = "<group>"; };
 		AC7561C31F29D6A3009FCD09 /* RNGoogleSignInBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNGoogleSignInBridge.m; sourceTree = "<group>"; };
 		AC7561C41F29D6A3009FCD09 /* RNGoogleSignInEvents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNGoogleSignInEvents.swift; sourceTree = "<group>"; };
 		AC7561C51F29D6A3009FCD09 /* RNGoogleSignInEventsBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNGoogleSignInEventsBridge.m; sourceTree = "<group>"; };
+		ACA75EC11FC6104300E21AD3 /* GoogleSignInDependencies.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleSignInDependencies.framework; path = ExampleApp/google_signin_sdk_4_1_0/GoogleSignInDependencies.framework; sourceTree = "<group>"; };
+		ACA75EDB1FC6104300E21AD3 /* GoogleSignIn.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GoogleSignIn.bundle; path = ExampleApp/google_signin_sdk_4_1_0/GoogleSignIn.bundle; sourceTree = "<group>"; };
+		ACA75EDC1FC6104300E21AD3 /* GoogleSignIn.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleSignIn.framework; path = ExampleApp/google_signin_sdk_4_1_0/GoogleSignIn.framework; sourceTree = "<group>"; };
 		E4DC691BFF23600A9513DF1D /* Pods-ExampleApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExampleApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ExampleApp/Pods-ExampleApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -271,6 +281,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ACA75EDD1FC6104300E21AD3 /* GoogleSignInDependencies.framework in Frameworks */,
+				ACA75EDE1FC6104300E21AD3 /* GoogleSignIn.bundle in Frameworks */,
+				ACA75EDF1FC6104300E21AD3 /* GoogleSignIn.framework in Frameworks */,
+				AC3D4E211FC603F200A1D520 /* SystemConfiguration.framework in Frameworks */,
+				AC3D4E1F1FC603E300A1D520 /* SafariServices.framework in Frameworks */,
 				5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */,
 				146834051AC3E58100842450 /* libReact.a in Frameworks */,
 				00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */,
@@ -493,6 +508,11 @@
 		F5E41128568A22C312DD6F93 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				ACA75EDB1FC6104300E21AD3 /* GoogleSignIn.bundle */,
+				ACA75EDC1FC6104300E21AD3 /* GoogleSignIn.framework */,
+				ACA75EC11FC6104300E21AD3 /* GoogleSignInDependencies.framework */,
+				AC3D4E201FC603F200A1D520 /* SystemConfiguration.framework */,
+				AC3D4E1E1FC603E300A1D520 /* SafariServices.framework */,
 				641BA64694B52554B45A46F7 /* libPods-ExampleApp.a */,
 				4CDCE5BA43DE922BC6734C7C /* libPods-ExampleAppTests.a */,
 			);
@@ -1024,23 +1044,13 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = J623D3MCYC;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/ExampleApp/google_signin_sdk_4_1_0",
+				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					"${PODS_ROOT}/Google/Headers",
-					"$(inherited)",
-					"\"${PODS_ROOT}/Headers/Public\"",
-					"\"${PODS_ROOT}/Headers/Public/FirebaseAnalytics\"",
-					"\"${PODS_ROOT}/Headers/Public/FirebaseCore\"",
-					"\"${PODS_ROOT}/Headers/Public/FirebaseInstanceID\"",
-					"\"${PODS_ROOT}/Headers/Public/GTMOAuth2\"",
-					"\"${PODS_ROOT}/Headers/Public/GTMSessionFetcher\"",
-					"\"${PODS_ROOT}/Headers/Public/Google\"",
-					"\"${PODS_ROOT}/Headers/Public/GoogleAppUtilities\"",
-					"\"${PODS_ROOT}/Headers/Public/GoogleInterchangeUtilities\"",
-					"\"${PODS_ROOT}/Headers/Public/GoogleSignIn\"",
-					"\"${PODS_ROOT}/Headers/Public/GoogleSymbolUtilities\"",
-					"\"${PODS_ROOT}/Headers/Public/GoogleToolboxForMac\"",
-					"$(SRCROOT)/../node_modules/react-native-google-sign-in/ios/RNGoogleSignIn",
+					"$(PROJECT_DIR)/ExampleApp/google_signin_sdk_4_1_0/GoogleSignIn.framework",
 				);
 				INFOPLIST_FILE = ExampleApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1064,23 +1074,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = J623D3MCYC;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/ExampleApp/google_signin_sdk_4_1_0",
+				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					"${PODS_ROOT}/Google/Headers",
-					"$(inherited)",
-					"\"${PODS_ROOT}/Headers/Public\"",
-					"\"${PODS_ROOT}/Headers/Public/FirebaseAnalytics\"",
-					"\"${PODS_ROOT}/Headers/Public/FirebaseCore\"",
-					"\"${PODS_ROOT}/Headers/Public/FirebaseInstanceID\"",
-					"\"${PODS_ROOT}/Headers/Public/GTMOAuth2\"",
-					"\"${PODS_ROOT}/Headers/Public/GTMSessionFetcher\"",
-					"\"${PODS_ROOT}/Headers/Public/Google\"",
-					"\"${PODS_ROOT}/Headers/Public/GoogleAppUtilities\"",
-					"\"${PODS_ROOT}/Headers/Public/GoogleInterchangeUtilities\"",
-					"\"${PODS_ROOT}/Headers/Public/GoogleSignIn\"",
-					"\"${PODS_ROOT}/Headers/Public/GoogleSymbolUtilities\"",
-					"\"${PODS_ROOT}/Headers/Public/GoogleToolboxForMac\"",
-					"$(SRCROOT)/../node_modules/react-native-google-sign-in/ios/RNGoogleSignIn",
+					"$(PROJECT_DIR)/ExampleApp/google_signin_sdk_4_1_0/GoogleSignIn.framework",
 				);
 				INFOPLIST_FILE = ExampleApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

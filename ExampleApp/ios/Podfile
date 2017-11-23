@@ -6,7 +6,7 @@ target 'ExampleApp' do
   # use_frameworks!
 
   # Pods for ExampleApp
-  pod 'Google/SignIn'
+  # pod 'GoogleSignIn'
 
   target 'ExampleAppTests' do
     inherit! :search_paths

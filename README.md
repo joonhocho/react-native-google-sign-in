@@ -97,6 +97,7 @@ import com.reactlibrary.googlesignin.RNGoogleSignInPackage; // Add this.
 - Double click on the value column.
 - Add `$(SRCROOT)/../node_modules/react-native-google-sign-in/ios/RNGoogleSignIn`.
 - Screenshots:
+
   ![](https://i.imgur.com/h8ZWoS4.png)
   
 

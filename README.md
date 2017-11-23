@@ -109,7 +109,7 @@ Add to your `{YourApp}/ios/{YourApp}/AppDelegate.m`:
   NSDictionary *plistDict = [NSDictionary dictionaryWithContentsOfFile:filePath];
   [GIDSignIn sharedInstance].clientID = [plistDict objectForKey:@"CLIENT_ID"];
 
-  ...add above codes
+  ...add above code
 }
 
 - (BOOL)application:(UIApplication *)application

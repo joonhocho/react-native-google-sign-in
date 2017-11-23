@@ -133,15 +133,15 @@ class RNGoogleSignInEvents: RCTEventEmitter, GIDSignInDelegate {
       ])
   }
   
-  func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
-    if (error == nil) {
+  func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser?, withError error: Error?) {
+    if (error == nil && user != nil) {
       self.signIn(user: user)
     } else {
       self.signInError(error: error)
     }
   }
   
-  func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
+  func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser?, withError error: Error?) {
     if (error == nil) {
       self.disconnect(user: user)
     } else {

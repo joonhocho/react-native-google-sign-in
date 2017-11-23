@@ -16,10 +16,10 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-  NSError* configureError;
-  [[GGLContext sharedInstance] configureWithError: &configureError];
-  NSAssert(!configureError, @"Error configuring Google services: %@", configureError);
-  
+	NSString *filePath = [[NSBundle mainBundle] pathForResource:@"GoogleService-Info" ofType:@"plist"];
+	NSDictionary *plistDict = [NSDictionary dictionaryWithContentsOfFile:filePath];
+	[GIDSignIn sharedInstance].clientID = [plistDict objectForKey:@"CLIENT_ID"];
+
   NSURL *jsCodeLocation;
 
   jsCodeLocation = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index.ios" fallbackResource:nil];

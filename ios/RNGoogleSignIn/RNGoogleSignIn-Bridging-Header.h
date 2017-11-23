@@ -25,6 +25,4 @@
   #import "React/RCTEventEmitter.h"
 #endif
 
-#import <Google/SignIn.h>
-
 #endif /* RNGoogleSignIn_Bridging_Header_h */

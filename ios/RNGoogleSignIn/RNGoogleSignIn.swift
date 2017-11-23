@@ -9,7 +9,7 @@ import Foundation
 
 @objc(RNGoogleSignIn)
 class RNGoogleSignIn: NSObject, GIDSignInUIDelegate {
-  
+
   static let sharedInstance = RNGoogleSignIn()
 
   weak var events: RNGoogleSignInEvents?
@@ -18,12 +18,28 @@ class RNGoogleSignIn: NSObject, GIDSignInUIDelegate {
     super.init()
     GIDSignIn.sharedInstance().uiDelegate = self
   }
-  
-//  @objc func addEvent(_ name: String, location: String, date: NSNumber, callback: @escaping (Array<String>) -> ()) -> Void {
-//    NSLog("%@ %@ %@", name, location, date)
-//    self.callback = callback
+
+  //  @objc func addEvent(_ name: String, location: String, date: NSNumber, callback: @escaping (Array<String>) -> ()) -> Void {
+  //    NSLog("%@ %@ %@", name, location, date)
+  //    self.callback = callback
   //  }
-  
+
+  @objc func configureGIDSignIn() {
+    if let filePath = Bundle.main.path(forResource: "GoogleService-Info", ofType: "plist") {
+      if let plistDict = NSDictionary(contentsOfFile: filePath) {
+        if let clientID = plistDict["CLIENT_ID"] as? String {
+          GIDSignIn.sharedInstance().clientID = clientID
+        } else {
+          print("RNGoogleSignIn Error: CLIENT_ID is invalid in GoogleService-Info.plist")
+        }
+      } else {
+        print("RNGoogleSignIn Error: GoogleService-Info.plist is malformed")
+      }
+    } else {
+      print("RNGoogleSignIn Error: GoogleService-Info.plist not found")
+    }
+  }
+
   @objc func configure(_ config: [String: Any]) {
     if let instance = GIDSignIn.sharedInstance() {
       if let clientID = config["clientID"] as? String {
@@ -58,13 +74,16 @@ class RNGoogleSignIn: NSObject, GIDSignInUIDelegate {
       GIDSignIn.sharedInstance().signIn()
     }
   }
-  
-  @objc func signOut() {
-    DispatchQueue.main.async {
-      GIDSignIn.sharedInstance().signOut()
+
+  @objc func signOut(_ resolve: RCTPromiseResolveBlock, reject: RCTPromiseRejectBlock) {
+    GIDSignIn.sharedInstance().signOut()
+    if GIDSignIn.sharedInstance().currentUser == nil {
+      resolve(nil)
+    } else {
+      reject("SignOutFailed", "Failed to sign out", nil)
     }
   }
-  
+
   @objc func signInSilently() {
     DispatchQueue.main.async {
       GIDSignIn.sharedInstance().signInSilently()
@@ -92,6 +111,13 @@ class RNGoogleSignIn: NSObject, GIDSignInUIDelegate {
       "iconOnly": "iconOnly",
       "standard": "standard",
       "wide": "wide",
+      "ErrorCode": [
+        "unknown": GIDSignInErrorCode.unknown.rawValue,
+        "keychain": GIDSignInErrorCode.keychain.rawValue,
+        "noSignInHandlersInstalled": GIDSignInErrorCode.noSignInHandlersInstalled.rawValue,
+        "hasNoAuthInKeychain": GIDSignInErrorCode.hasNoAuthInKeychain.rawValue,
+        "canceled": GIDSignInErrorCode.canceled.rawValue,
+      ],
     ]
   }
   
@@ -101,23 +127,42 @@ class RNGoogleSignIn: NSObject, GIDSignInUIDelegate {
   func sign(inWillDispatch signIn: GIDSignIn!, error: Error?) {
     events?.dispatch(error: error)
   }
-  
+	
   func sign(_ signIn: GIDSignIn!, dismiss viewController: UIViewController!) {
     viewController.dismiss(animated: true, completion: nil)
   }
   
   func sign(_ signIn: GIDSignIn!, present viewController: UIViewController!) {
-    let parent = topMostViewController()
-    parent?.present(viewController, animated:true, completion:nil)
+    let _ = present(viewController: viewController)
   }
-    
-  func topMostViewController() -> UIViewController? {
-    var topController = UIApplication.shared.keyWindow?.rootViewController
-    while topController?.presentedViewController != nil {
-      topController = topController?.presentedViewController
+
+  func getTopViewController(window: UIWindow?) -> UIViewController? {
+    if let window = window {
+      var top = window.rootViewController
+      while true {
+        if let presented = top?.presentedViewController {
+          top = presented
+        } else if let nav = top as? UINavigationController {
+          top = nav.visibleViewController
+        } else if let tab = top as? UITabBarController {
+          top = tab.selectedViewController
+        } else {
+          break
+        }
+      }
+      return top
     }
-    return topController
+    return nil
+  }
+
+  func present(viewController: UIViewController) -> Bool {
+    if let topVc = getTopViewController(window: UIApplication.shared.keyWindow) {
+      topVc.present(viewController, animated: true, completion: nil)
+      return true
+    }
+    return false
   }
 
   // END: GIDSignInUIDelegate
+
 }

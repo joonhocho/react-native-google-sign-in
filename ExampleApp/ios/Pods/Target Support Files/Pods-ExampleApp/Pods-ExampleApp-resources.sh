@@ -73,14 +73,6 @@ EOM
       ;;
   esac
 }
-if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_resource "GTMOAuth2/Source/Touch/GTMOAuth2ViewTouch.xib"
-  install_resource "GoogleSignIn/Resources/GoogleSignIn.bundle"
-fi
-if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_resource "GTMOAuth2/Source/Touch/GTMOAuth2ViewTouch.xib"
-  install_resource "GoogleSignIn/Resources/GoogleSignIn.bundle"
-fi
 
 mkdir -p "${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}"
 rsync -avr --copy-links --no-relative --exclude '*/.svn/*' --files-from="$RESOURCES_TO_COPY" / "${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}"

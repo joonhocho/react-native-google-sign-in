@@ -1,7 +1,6 @@
-
 {
   "name": "react-native-google-sign-in",
-  "version": "0.0.16",
+  "version": "1.0.16",
   "description": "React Native Wrapper for Google Sign-In OAuth SDK / API",
   "main": "index.js",
   "scripts": {

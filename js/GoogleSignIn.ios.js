@@ -30,10 +30,7 @@ const GoogleSignIn = {
     RNGoogleSignIn.signIn();
   },
 
-  async signInPromise() {
-    const user = await RNGoogleSignIn.currentUser();
-    if (user) return GoogleSignIn.normalizeUser(user);
-
+  signInPromise() {
     return new Promise((resolve, reject) => {
       const offSuccess = GoogleSignIn.onSignIn((data) => {
         offSuccess();
@@ -92,30 +89,15 @@ const GoogleSignIn = {
   },
 
   signOut() {
-    RNGoogleSignIn.signOut();
+    return RNGoogleSignIn.signOut();
   },
 
-  async signOutPromise() {
-    const user = await RNGoogleSignIn.currentUser();
-    if (!user) return null;
-
-    return new Promise((resolve, reject) => {
-      const offSuccess = GoogleSignIn.onDisconnect((data) => {
-        offSuccess();
-        offError();
-        resolve(data);
-      });
-      const offError = GoogleSignIn.onDisconnectError((error) => {
-        offSuccess();
-        offError();
-        reject(error);
-      });
-      RNGoogleSignIn.signOut();
-    });
+  signOutPromise() {
+    return RNGoogleSignIn.signOut();
   },
 
   signInSilently() {
-    RNGoogleSignIn.signInSilently();
+    return RNGoogleSignIn.signInSilently();
   },
 
   // Sign in without a prompt
@@ -138,6 +120,22 @@ const GoogleSignIn = {
 
   disconnect() {
     RNGoogleSignIn.disconnect();
+  },
+
+  disconnectPromise() {
+    return new Promise((resolve, reject) => {
+      const offSuccess = GoogleSignIn.onDisconnect((data) => {
+        offSuccess();
+        offError();
+        resolve(data);
+      });
+      const offError = GoogleSignIn.onDisconnectError((error) => {
+        offSuccess();
+        offError();
+        reject(error);
+      });
+      RNGoogleSignIn.disconnect();
+    });
   },
 
   currentUser() {

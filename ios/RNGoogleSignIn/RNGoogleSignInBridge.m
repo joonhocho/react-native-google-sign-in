@@ -20,7 +20,9 @@
 // RCT_EXTERN_METHOD(addEvent:(NSString *)name location:(NSString *)location date:(nonnull NSNumber *)date callback: (RCTResponseSenderBlock)callback);
 RCT_EXTERN_METHOD(configure:(NSDictionary *)config);
 RCT_EXTERN_METHOD(signIn);
-RCT_EXTERN_METHOD(signOut);
+RCT_EXTERN_METHOD(signOut:
+                  (RCTPromiseResolveBlock)resolve
+                  reject:(RCTPromiseRejectBlock)reject);
 RCT_EXTERN_METHOD(signInSilently);
 RCT_EXTERN_METHOD(disconnect);
 RCT_EXTERN_METHOD(currentUser:

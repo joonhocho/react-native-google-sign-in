@@ -10,25 +10,29 @@ import Foundation
 @objc(RNGoogleSignInEvents)
 class RNGoogleSignInEvents: RCTEventEmitter, GIDSignInDelegate {
   var observing = false
-  
+
   override init() {
     super.init()
     GIDSignIn.sharedInstance().delegate = self
     RNGoogleSignIn.sharedInstance.events = self
   }
-  
+
   override func supportedEvents() -> [String] {
     return ["signIn", "signInError", "disconnect", "disconnectError", "dispatch"]
   }
-  
+
   override func startObserving() {
     observing = true
   }
-  
+
   override func stopObserving() {
     observing = false
   }
-  
+
+  override open static func requiresMainQueueSetup() -> Bool {
+    return true;
+  }
+
   static func userToJSON(_ user: GIDGoogleUser?) -> [String: Any]? {
     if let user = user {
       var body: [String: Any] = [:]
@@ -95,44 +99,44 @@ class RNGoogleSignInEvents: RCTEventEmitter, GIDSignInDelegate {
       if let serverAuthCode = user.serverAuthCode {
         body["serverAuthCode"] = serverAuthCode
       }
-      
+
       return body
     } else {
       return nil
     }
   }
-  
+
   func signIn(user: GIDGoogleUser?) {
     if (!observing) { return }
     sendEvent(withName: "signIn", body: RNGoogleSignInEvents.userToJSON(user))
   }
-  
+
   func signInError(error: Error?) {
     if (!observing) { return }
     sendEvent(withName: "signInError", body: [
       "description": error?.localizedDescription ?? "",
       ])
   }
-  
+
   func disconnect(user: GIDGoogleUser?) {
     if (!observing) { return }
     sendEvent(withName: "disconnect", body: RNGoogleSignInEvents.userToJSON(user))
   }
-  
+
   func disconnectError(error: Error?) {
     if (!observing) { return }
     sendEvent(withName: "disconnectError", body: [
       "description": error?.localizedDescription ?? "",
       ])
   }
-  
+
   func dispatch(error: Error?) {
     if (!observing) { return }
     sendEvent(withName: "dispatch", body: [
       "description": error?.localizedDescription ?? "",
       ])
   }
-  
+
   func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser?, withError error: Error?) {
     if (error == nil && user != nil) {
       self.signIn(user: user)
@@ -140,7 +144,7 @@ class RNGoogleSignInEvents: RCTEventEmitter, GIDSignInDelegate {
       self.signInError(error: error)
     }
   }
-  
+
   func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser?, withError error: Error?) {
     if (error == nil) {
       self.disconnect(user: user)

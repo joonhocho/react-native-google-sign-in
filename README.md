@@ -19,7 +19,7 @@ Follow Google's official instructions for [Android](https://developers.google.co
 Follow everything from the instructions with the following modifications.
 Some of the following modifications should be done by `react-native install` automatically. If not, do it yourself:
  - Move `google-services.json` to `{YourApp}/android/app/google-services.json`.
- 
+
  - Add to your `{YourApp}/android/settings.gradle`:
 ```
 include ':react-native-google-sign-in'
@@ -39,7 +39,7 @@ dependencies {
 dependencies {
     compile(project(":react-native-google-sign-in")) { // ADD this
         exclude group: "com.google.android.gms"
-    } 
+    }
     ...your modules...
     compile "com.google.android.gms:play-services-auth:10.0.1" // Add this, not 9.8.0 (from instructions).
     compile "com.facebook.react:react-native:+"
@@ -68,7 +68,7 @@ import com.reactlibrary.googlesignin.RNGoogleSignInPackage; // Add this.
 
 ### (prerequisite) Setup Swift Bridging Header
 - Make sure you have a Swift Bridging Header for your project. Here's [how to create one](http://www.learnswiftonline.com/getting-started/adding-swift-bridging-header/) if you don't.
-- ![](https://i.imgur.com/1XgTv5h.png)
+- ![](https://i.imgur.com/1XgTv5h.png) or [here](https://mycodetips.com/ios/manually-adding-swift-bridging-header-1290.html)
 
 ### Manually download and install Google SignIn SDK (Without CocoaPods)
 - At the time of writing, `Google Sign-In SDK 4.1.0` is the latest.
@@ -86,11 +86,12 @@ import com.reactlibrary.googlesignin.RNGoogleSignInPackage; // Add this.
   ![](https://i.imgur.com/IefwOOn.png)
   ![](https://i.imgur.com/IUMj8GF.png)
   ![](https://i.imgur.com/KwXekFn.png)
-  
-  
+
+
 - Open up your project in xcode and right click the package.
 - Click `Add files to '{YourApp}'`.
 - Select to `{YourApp}/node_modules/react-native-google-sign-in/ios/RNGoogleSignIn`.
+- Click `Options` > check the box `Copy items if needed` and select `Create groups`
 - Click 'Add'.
 - Click your project in the navigator on the left and go to `Build Settings`.
 - Search for `Header Search Paths`.
@@ -99,7 +100,8 @@ import com.reactlibrary.googlesignin.RNGoogleSignInPackage; // Add this.
 - Screenshots:
 
   ![](https://i.imgur.com/h8ZWoS4.png)
-  
+
+If you need to use `Firebase/xxx` libraries that should be loaded through CocoaPod you will end with Duplicated symbols error because some libs will be both present in Pods files and the SDK local copy [see issue 63](https://github.com/joonhocho/react-native-google-sign-in/issues/63)
 
 
 Add to your `{YourApp}/ios/{YourApp}/AppDelegate.m`:
@@ -137,6 +139,26 @@ Add to your `{YourApp}/ios/{YourApp}/AppDelegate.m`:
   }
   // ADD THE ABOVE CODE
   return YES;
+}
+
+- (void)signIn:(GIDSignIn *)signIn
+        didSignInForUser:(GIDGoogleUser *)user
+        withError:(NSError *)error
+{
+  // -- Perform any operations on signed in user here.
+  //NSString *idToken = user.authentication.idToken; // Safe to send to the server
+  NSString *userId = user.userID; // For client-side use only!
+  NSString *email= user.profile.email;
+  NSString *fullName = user.profile.name;
+  //NSString *givenName = user.profile.givenName;
+  //NSString *familyName = user.profile.familyName;
+
+  // -- Ex: Crashlytics log user
+  if (NSClassFromString(@"CrashlyticsKit")) {
+    [CrashlyticsKit setUserIdentifier:userId];
+    [CrashlyticsKit setUserEmail:email];
+    [CrashlyticsKit setUserName:fullName];
+  }
 }
 ```
 
@@ -201,7 +223,7 @@ async yourMethod() {
     // Whether to request server auth code. Make sure to provide `serverClientID`.
     // https://developers.google.com/android/reference/com/google/android/gms/auth/api/signin/GoogleSignInOptions.Builder.html#requestServerAuthCode(java.lang.String, boolean)
     offlineAccess: boolean,
-    
+
     // Android
     // Whether to force code for refresh token.
     // https://developers.google.com/android/reference/com/google/android/gms/auth/api/signin/GoogleSignInOptions.Builder.html#requestServerAuthCode(java.lang.String, boolean)

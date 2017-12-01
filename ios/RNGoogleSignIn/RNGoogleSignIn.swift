@@ -68,7 +68,7 @@ class RNGoogleSignIn: NSObject, GIDSignInUIDelegate {
       }
     }
   }
-  
+
   @objc func signIn() {
     DispatchQueue.main.async {
       GIDSignIn.sharedInstance().signIn()
@@ -89,21 +89,25 @@ class RNGoogleSignIn: NSObject, GIDSignInUIDelegate {
       GIDSignIn.sharedInstance().signInSilently()
     }
   }
-  
+
   @objc func disconnect() {
     DispatchQueue.main.async {
       GIDSignIn.sharedInstance().disconnect()
     }
   }
-  
+
   @objc func currentUser(_ resolve: RCTPromiseResolveBlock, reject: RCTPromiseRejectBlock) {
     resolve(RNGoogleSignInEvents.userToJSON(GIDSignIn.sharedInstance().currentUser))
   }
-  
+
   @objc func hasAuthInKeychain(_ resolve: RCTPromiseResolveBlock, reject: RCTPromiseRejectBlock) {
     resolve(GIDSignIn.sharedInstance().hasAuthInKeychain())
   }
-  
+
+  @objc static func requiresMainQueueSetup() -> Bool {
+    return true;
+  }
+
   @objc func constantsToExport() -> [String: Any] {
     return [
       "dark": "dark",
@@ -120,18 +124,18 @@ class RNGoogleSignIn: NSObject, GIDSignInUIDelegate {
       ],
     ]
   }
-  
-  
+
+
   // START: GIDSignInUIDelegate
-  
+
   func sign(inWillDispatch signIn: GIDSignIn!, error: Error?) {
     events?.dispatch(error: error)
   }
-	
+
   func sign(_ signIn: GIDSignIn!, dismiss viewController: UIViewController!) {
     viewController.dismiss(animated: true, completion: nil)
   }
-  
+
   func sign(_ signIn: GIDSignIn!, present viewController: UIViewController!) {
     let _ = present(viewController: viewController)
   }

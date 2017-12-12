@@ -7,7 +7,7 @@ For LinkedIn SDK, check out [joonhocho/react-native-linkedin-sdk](https://github
 
 ## Getting started
 
-Tested with React Native 0.39 and 0.40. Also, see [Tested Environments](#tested-environments).
+Tested with React Native 0.39, 0.40 and 0.51 Also, see [Tested Environments](#tested-environments).
 Let me know if some instructions are missing.
 
 `$ react-native install react-native-google-sign-in`
@@ -99,6 +99,11 @@ import com.reactlibrary.googlesignin.RNGoogleSignInPackage; // Add this.
 - Screenshots:
 
   ![](https://i.imgur.com/h8ZWoS4.png)
+
+- With project still selected in the navigator go to `Info`.
+- Add a URL Type and set `Identifier` and `URL Schemes` to the REVERSED_CLIENT_ID from your GoogleService-Info.plist
+
+  ![](https://i.imgur.com/Yeqlzb4.png)
   
 
 
@@ -237,6 +242,12 @@ I only tested with the following environments:
  - Swift version 3.0.2 (swiftlang-800.0.63 clang-800.0.42.1) / Target: x86_64-apple-macosx10.9
  - Xcode Version 8.2.1 (8C1002)
  - Android Studio 2.2.3 / Build #AI-145.3537739, built on December 2, 2016 / JRE: 1.8.0_112-release-b05 x86_64 / JVM: OpenJDK 64-Bit Server VM by JetBrains s.r.o
+
+I tested with the following environment:
+
+ - Swift version 4.0.3 (swiftlang-900.0.74.1 clang-900.0.39.2) / Target: x86_64-apple-macosx10.9
+ - Xcode Version 9.2 (9C40b)
+ - Google Sign-In SDK 4.1.1
 
 
 ## LICENSE
